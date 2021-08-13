@@ -1,0 +1,23 @@
+
+<div class="container-fluid"><br>
+
+			<div style="color:brown;font-family: Segoe Script;background-color:white;font-weight:bold;text-align:center;box-shadow: 5px 10px 8px #BFBFBF;">
+				<span>Team Members:Tausif Ahmad|Ankit Anjani|Abhishek Kumar|Vinay Ranjan<br>
+				copyright&copy;E-cart
+				</span>
+			
+			</div>
+ 		</div>
+		 </div>
+</div>
+<script>
+	var app=angular.module('myapp',[])
+	app.controller('myCtrl',function($scope,$interval){
+	$scope.time=new Date().toLocaleTimeString()
+	$interval(function(){
+	$scope.time=new Date().toLocaleTimeString()
+})
+})
+</script>
+</body>
+</html>

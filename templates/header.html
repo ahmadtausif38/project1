@@ -1,0 +1,115 @@
+     <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>E-kart</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+<style type="text/css">
+#content{
+	text-align: center;
+margin-top: 10px;
+
+
+}
+#img{
+height: 200px;width: 130px;
+border-radius: 15px;
+}
+#lap{
+height: 180px;width: 250px;
+border-radius: 20px;
+
+}
+#in{
+  border:1px solid red;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 16px;
+}
+#btn{
+  height: 30px;
+  border-radius: 10px;
+  border:1px solid red;
+}
+.active a{
+  background-color:#641E16;
+  padding:5px 50px;
+  
+  
+}
+</style>
+</head>
+<body style="background-color:#F0FFFF">
+<div class="container-fluid">
+
+   <div class="container-fluid text-right" style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
+   	<!-- Time is written here-->
+   	<b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+{{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;&nbsp;
+
+<b>|| <span class="glyphicon glyphicon-earphone"></span>:+91 7615834732 ||</b> &nbsp; 
+     <b><span class="glyphicon glyphicon-envelope"></span>: contact@ekart.com || </b>
+{% if user.is_authenticated %}
+     <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
+     <a href="accounts/LogOut"><button type="button" class="btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-off"></span> LogOut
+    </button></a>
+    {% else %}
+    <a href="accounts/login"><button type="button" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-log-in"></span> LogIn</button></a>
+      {% endif %}
+    
+     
+      </div> 
+       <div class="container-fluid">
+          <b><font face="Ink Free" color="brown" size=6px>E-kart<img src="/static/logo1.png" width=50 height=50></font></b> &nbsp;<b class="bg bg-info"><i>Welcome to India's No.1 E-Commerce site</i></b></div>
+            <div class="container">
+             <div class="container" style="background-color:#4EE2EC;box-shadow: 5px 10px 8px #BFBFBF;">
+               <div class="row">
+                <div class="col-md-12">
+                <div class="navbar"><center>
+                <a href="/index"><font size=3px color=black style="padding:20px;">Home</font></a>
+                <a href="/about"><font size=3px color=black style="padding:20px;">About Us</font></a>
+                <a href="/gallery"><font size=3px color=black style="padding:20px;">Gallery</font></a>
+                <a href="/contact"><font size=3px color=black style="padding:20px;">Contact Us</font></a>
+                <a href="#" style="padding-left:40px;"><span class="glyphicon glyphicon-shopping-cart" style="color:brown;font-size:20px"><sup>0</sup></span></a>
+                <span style="position:absolute;right:30px;">
+                <form action='/search' method='get'>
+                 {% csrf_token %}
+                 
+                <input id="in" type="search" name="search" placeholder="Search....."><button id='btn' type="submit" class="glyphicon glyphicon-search"></button>
+                </form>
+                </span>
+                
+                </center>
+                </div>
+              </div>
+             </div>
+            </div>
+           </div>
+  <div class="container">
+      <div class="col-sm-2" style="background-color:black;color:white;box-shadow: 5px 10px 8px 5px #BFBFBF;">       
+              <center>
+             <h1>Brands</h1>
+              <p class=" {% if request.path == '/apple' %} active {% endif %}"><a href="/apple" style="color:white;">Apple</a></p>
+               <p class=" {% if request.path == '/samsung' %} active {% endif %}"><a href="/samsung" style="color:white;">Samsung</a></p>
+               <p class=" {% if request.path == '/sony' %} active {% endif %}"><a href="/sony" style="color:white;">Sony</a></p>
+               <p class=" {% if request.path == '/mi' %} active {% endif %}"><a href="/mi" style="color:white;">Mi</a></p>
+               <p class=" {% if request.path == '/realme' %} active {% endif %}"><a href="/realme" style="color:white;">Realme</a></p>
+                </center>
+                 <center>
+            <h1>Category</h1>
+              <p class=" {% if request.path == '/mobile' %} active {% endif %}"><a href="/mobile" style="color:white;">Mobile</a></p>
+              <p class=" {% if request.path == '/laptop' %} active {% endif %}"><a href="/laptop" style="color:white;">Laptop</a></p>
+              <p class=" {% if request.path == '/camera' %} active {% endif %}"><a href="/camera" style="color:white;">Camera</a></p>
+              <p class=" {% if request.path == '/earphone' %} active {% endif %}"><a href="/earphone" style="color:white;">Earphones</a></p><br>
+                 </center>
+     </div>

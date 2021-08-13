@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!--{% include "header.html" %}-->
+
+     <!--Header ends-->
+     {% block content %}
+          <div class="col-sm-10" style="background-color:white;box-shadow: 5px 10px 10px #BFBFBF;"><br>
+          {% if items %}
+      <p style="font-family:'Sans-serif';color:brown;font-size:20px;" >Search Results....</p>
+      {% else %}
+      <p style="font-family:'Sans-serif';color:brown;font-size:20px;" >No Result found....</p>
+      {% endif %}
+       {% for item in items %}  
+       
+<div class="col-sm-3" id="content"><a href="/product_details/{{item.id}}"><img id="img" src="{{item.pro_img.url}}" ><br><h4>{{item.pro_name}}</h4></a></div>
+ {% endfor %}
+</div>
+ </div>
+		 {% endblock  %}
+ <!-- Footer Starts-->
+<!-- 	{% include "footer.html" %}	-->

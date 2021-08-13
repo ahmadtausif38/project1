@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>About Us</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+</head>
+<style>
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 2px;
+  border-radius: 50%;
+}
+</style>
+<body style="background-color:#F0FFFF">
+<div class="container-fluid text-right" style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
+   <a href="/index"><span style="position:absolute;left:30px;font-size:20px" class="glyphicon glyphicon-arrow-left"></span></a>
+    <b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+      {{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;|| &nbsp;
+<b><span class="glyphicon glyphicon-earphone"></span>: +91 7615834732</b> &nbsp;|| &nbsp; 
+     <b><span class="glyphicon glyphicon-envelope"></span>: Contact@ekart.com </b> &nbsp;
+     {% if user.is_authenticated %}
+     <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
+     <a href="/accounts/LogOut"><button type="button" class="btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-off"></span> LogOut
+    </button></a>
+    {% else %}
+    <a href="/accounts/login"><button type="button" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-log-in"></span> LogIn</button></a>
+      {% endif %}
+      </div> 
+       <div class="container-fluid">
+          <b><font face="Ink Free" color="brown" size=6px>E-kart<img src="/static/logo1.png" width=50 height=50></font></b> &nbsp;<b class="bg bg-info"><i>Welcome to India's No.1 E-Commerce site</i></b></div>
+            <div class="container">
+             <div class="container" style="background-color:#4EE2EC;box-shadow: 5px 10px 8px #BFBFBF;">
+               <div class="row">
+                <div class="col-md-12">
+                <div class="navbar"><center>
+                <a href="/index"><font size=3px color=black style="padding:20px;">Home</font></a>
+                <a href="/about"><font size=3px color=black style="padding:20px;">About Us</font></a>
+                <a href="/gallery"><font size=3px color=black style="padding:20px;">Gallery</font></a>
+                <a href="/contact"><font size=3px color=black style="padding:20px;">Contact Us</font></a>
+                
+                
+                </center>
+                </div>
+              </div>
+             </div>
+            </div>
+           </div>
+  <h1 align="center">About Us</h1>
+  <div <div class="container-fluid">
+  <div class="col-md-4">
+
+  <img src="/static/bg1.jpg" style="height:300px; width:390px;border-radius:10px;box-shadow: 10px 10px 3px #BFBFBF;">
+ 
+  </div>
+  <div class="col-md-8">
+  <p style="font-size:14px;text-align:justify;padding-left:10px;font-family:Cursive">E-kart is a dynamic, fastest growing and service oriented electronic Retail Chain in Bihar. We are a group of multi-brand stores dealing in consumer durables of all kinds, with presence in almost every district of Bihar, E-kart has become a household name amongst the people of the state. It is the first & only consumer electronic retail company to be listed on Bombay stock exchange (BSE).<br><br>
+
+What began in 2021 with just one store has not just grown in numbers but now also become synonymous with value and trust within the people of Bihar. Since its inception and after almost two decades Aditya Vision has catered to more than 1 Crore happy customers and the number is growing by each passing day.
+
+<br><br>With top Global brands in our Bouquet we have more than 10,000 Products ranging from Digital Gadgets like Mobile Phones, Laptops, Tablets to Entertainment Solutions like Earphones, Cameras.
+
+<br><br>With a focus on customer satisfaction, the brand emphasizes also on the after sales experience of the customer. The proof of which is our happy customers base across Bihar. With 75+ stores up and running and a few more lined up in the next couple of months, you will never be far from us.  </p>
+</div>
+</div>
+<div align='center'><hr color='#bfbfbf'>
+<h1>follow us on</h1>
+<a href="https://www.youtube.com/" class="fa fa-youtube" target='blank'></a>
+<a href="https://www.facebook.com/" class="fa fa-facebook" target='blank'></a>
+<a href="https://www.twitter.com/" class="fa fa-twitter" target='blank'></a>
+<a href="https://www.linkedin.com/in/wave-tausif" class="fa fa-linkedin" target='blank'></a>
+<a href="https://www.gmail.com/" class="fa fa-google" target='blank'></a>
+<a href="https://www.instagram.com/" class="fa fa-instagram" target='blank'></a>
+</div>
+<!--Footer Start here-->
+		{% include 'footer.html' %}

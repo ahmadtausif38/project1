@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content='width=device-width,content="initial-scale=1"'>	
+    <title>Contact Us Page</title> 
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+	  
+</head>
+<style>
+
+{
+	margin:0;
+	padding:0;
+	box-sizing:boarder-box;
+	font-family: 'Poppins', sans-serif;	
+	max-width: 100%;
+	max-height: 100%;
+}
+.contact
+{
+	position: relative;
+	min-height: 100vh;
+	padding: 50px 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: url("/static/call.jpg");
+	background-size: cover;
+}
+.contact .content
+{
+	max-width: 800px;
+	text-align: center;	
+}
+.contact .content h2
+{
+	font-size: 36px;
+	font-weight: 500;
+	color: black;	
+}
+.contact .content p
+{
+	
+	font-weight: 300;
+	color: black;	
+}
+.container
+{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;	
+}
+.container .contactInfo
+{
+	width:50%;
+	display: flex;
+	flex-direction: column;	
+}
+.container .contactInfo .box
+{
+	position: relative;
+	padding: 20px 0;
+	display: flex;	
+}
+.container .contactInfo .box .icon
+{
+	min-width: 60px;
+	height: 60px;
+	background: yellow;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	font-size:22px;	
+}
+.container .contactInfo .box .text
+{
+	
+	display: flex;
+	margin-left: 20px;
+	font-size: 16px;
+	color: black;
+	flex-direction: column;
+	font-weight: 300;	
+}
+.container .contactInfo .box .text h3
+{
+	color: #00bcd4;
+	font-weight: 500;	
+}
+.contactForm
+{
+	width: 40%;
+	padding:40px;
+	background: #00bcd4;
+}
+.contactForm h2
+{
+	font-size: 30px;
+	color: black;
+	font-weight: 500;
+}
+.contactForm .inputBox
+{
+	width: 100%;
+	position: relative;
+	margin-top: 10px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea
+{
+	width: 100%;
+	padding: 5px 0;
+	font-size: 16px;
+	margin: 10px 0;
+	border: none;
+	border-bottom: 2px solid #333;
+	outline: none;
+	resize: none;	
+}
+.contactForm .inputBox span
+{
+	position: absolute;
+	left: 0;
+	padding:5px 0;
+	font-size: 16px;
+	margin: 10px 0;
+	pointer-events: none;
+	transition: 0.5s;
+	color: red;	
+}
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span
+{
+	color: yellow;
+	font-size: 12px;
+	transform: translateY(-20px);
+}
+.contactForm .inputBox input[type="submit"]
+{
+	width: 100px;
+	background: yellow;
+	color: red;
+	border: none;
+	cursor: pointer;
+	padding: 10px;
+	font-size: 18px;
+}
+
+@media (max-width: 991px)
+{
+	.contact
+	{
+		padding: 50px;		
+	}
+	.container
+	{
+		flex-direction: column;
+	}
+	.container .contactInfo
+	{
+		margin-bottom: 40px;
+	}
+	.container .contactInfo,
+	.contactForm
+	{
+		width: 100%;
+	}
+
+
+
+
+</style>
+<body>
+    <div class="container-fluid text-right" style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
+    <a href="/index"><span style="position:absolute;left:30px;font-size:20px" class="glyphicon glyphicon-arrow-left"></span></a>
+   	<!-- Time is written here-->
+   	<b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+{{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;&nbsp;
+
+<b>|| <span class="glyphicon glyphicon-earphone"></span>:+91 7615834732 ||</b> &nbsp; 
+     <b><span class="glyphicon glyphicon-envelope"></span>: contact@ekart.com || </b>
+{% if user.is_authenticated %}
+     <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
+     <a href="accounts/LogOut"><button type="button" class="btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-off"></span> LogOut
+    </button></a>
+    {% else %}
+    <a href="accounts/login"><button type="button" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-log-in"></span> LogIn</button></a>
+      {% endif %}
+    
+     
+      </div> 
+	 <div class="container-fluid">
+          <b><font face="Ink Free" color="brown" size=4px>E-kart<img src="/static/logo1.png" width=30 height=30></font></b> &nbsp;<b class="bg bg-info">
+		      <i>Welcome to India's No.1 E-Commerce site:</i></b>
+	 </div>
+     <section class="contact">
+	    <div class="content">
+		  <h2>Contact Us</h2>
+		  <h10> We're here to help and answer any question you might have.For any query call us. If you have any suggestion about this website.
+		      Please fill the form given below and submit to send you messages.We'll looking forward to your message and work on it as soon 
+			  as possible.
+		  </h10>
+		</div>
+		<div class="container">
+		  <div class="contactInfo">
+		    <div class="box">
+			  <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+			  <div class="text">
+			    <h3>Address:</h3>
+				<p> <b>Boring Road, Beside G V Mall,<br>Patna - 800001</b></p>
+			  </div>  
+			</div>
+			<div class="box">
+			   <div class="icon"><i class="far fa-envelope"></i></div>
+			   <div class="text">
+			     <h3>Email:</h3>
+				 <p><b>Contact@ekart.com</b></p>
+			   </div>
+			</div>
+			  <div class="box">
+			   <div class="icon"><i class="fas fa-phone-alt"></i></div>
+			   <div class="text">
+			     <h3>Phone:</h3>
+				 <p><b>Call Us on:<h4 style="color:#7FFF00">+91 7615834732</h4></b></p>
+			   </div>			  
+			  </div>			
+		  </div>
+		  <div class="contactForm">
+		  {% for message in messages %}
+				<strong style="color:green;background-color:white;padding:10px;">{{message}}</strong>
+		  {% endfor %}
+		    <form method="post">
+        {% csrf_token %}
+			   <h2>Send Messages</h2>
+			   <div class="inputBox">
+			     <input type="text" name="name" required="required">
+				 <span>Full Name</span>
+			   </div>
+			   <div class="inputBox">
+			     <input type="email" name="email" required="required">
+				 <span>Email</span>
+			   </div>
+			   <div class="inputBox">
+			     <textarea required="required" name="message"></textarea>
+				 <span>Type Messages....</span>
+			   </div>
+			   <div class="inputBox">
+			     <input type="submit" value="submit">
+				 
+			   </div>
+			</form>
+		  </div>
+		</div>
+	 </section>
+	 
+       <!--Footer Start here-->
+		{% include 'footer.html' %}

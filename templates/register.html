@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-kart | Login</title> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<style type="text/css">
+	#Ubtn{
+		width: 180px;height: 50px;font-size: 16px;
+	}
+	
+input{
+	width: 360px;
+	height: 50px;
+	font-size: 14px;
+	border:1px solid skyblue;
+	border-radius: 5px;
+
+}
+</style>
+</head>
+<body style="background-image: url(/static/login.jpg);">
+	<div class="container-fluid">
+		<div class="container-fluid text-right" style="background-color:pink;">
+		<b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+      {{time}}{% endverbatim %}</span></b>&nbsp; &nbsp; 
+			<b><span class="glyphicon glyphicon-earphone"></span>:+91 7615834732</b> &nbsp; 
+     			<b><span class="glyphicon glyphicon-envelope"></span>: contact@ekart.com</b> &nbsp;
+			<b><a href="/admin"><span class="glyphicon glyphicon-user" style="color:#0489B1"></span>Admin</a></b> &nbsp;
+		</div>
+	<div class="container-fluid">
+          			<b><font face="Ink Free" color="white" size=6px>E-kart<img src="/static/logo1.png" width=50 height=50></font></b> &nbsp;<b class="bg bg-info"><i>Welcome to India's No.1 E-Commerce site</i></b>
+          		</div>
+          		
+<div style="text-align: center;position: relative;margin-top: 5%;">
+				  <center>
+				  {% for message in messages %}
+				 <font style="font-family: Segoe Script;color: red;background-color: white;padding: 10px;border-radius: 5px; font-weight: bold;">{{message}}</font>
+				 {% endfor %}</center>
+         <div style="text-align: center;position: relative;">
+         	<h2 style="font-family: Segoe Script;color: white;">User Registration</h2>
+         	<span style="color:#7CF7CA;font-size: 50px;" class="glyphicon glyphicon-user"></span>
+         	<form action="register" method="post">
+				
+				{% csrf_token %}
+
+         		<input type="text" name="first_name" placeholder="Enter First Name" required><br>
+				 <input type="text" name="last_name" placeholder="Enter Last Name" required><br>
+         		<input type="email" name="email" placeholder="Enter Email" required><br>
+         		<input type="text" name="username" placeholder="Enter Username" required><br>
+         		<input type="password" name="password1" placeholder="Enter Password" required><br>
+         		<input type="password" name="password2" placeholder="Enter Confirm Password" required><br>
+         		<input class="btn btn-primary" type="submit" name="submit" value="Register" required>
+				 
+         	</form>
+			 
+         		<br><font color="white" face="Segoe Script" size="4">Already Registerd?</font>&nbsp;&nbsp;<a href="/"><font size="4" color="skyblue" face="Segoe Script">LogIn Here</font></a>
+         </div>
+     	
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,14 @@
+    {% extends 'base.html' %}
+<!--{% include "header.html" %}-->
+
+     <!--Header ends-->
+     {% block content %}
+          <div class="col-sm-10" style="background-color:white;box-shadow: 5px 10px 10px #BFBFBF;"><br>
+       {% for pro1 in prod %}   
+<div class="col-sm-3" id="content"><a href="/product_details/{{pro1.id}}"><img id="img" src="{{pro1.pro_img.url}}" style="height:100px;width:180px;" ><br><h4>{{pro1.pro_name}}</h4></a></div>
+ {% endfor %}
+</div>
+ </div>
+		 {% endblock  %}
+ <!-- Footer Starts-->
+<!-- 	{% include "footer.html" %}	-->

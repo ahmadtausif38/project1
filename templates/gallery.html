@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title>Gallery</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+<style type="text/css">
+
+#img{
+height: 180px;width: 130px;
+border-radius: 15px;
+margin:50px;
+box-shadow: 5px 10px 10px #BFBFBF;
+transition: transform .4s;
+}
+
+#content img:hover{
+  
+background-color: pink;
+transform: scale(1.4);
+}  
+
+
+</style>
+</head>
+<body style="background-color: #F0FFFF;" ng-app="myapp">
+<div class="container-fluid">
+<div class="container-fluid text-right" style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
+   <a href="/index"><span style="position:absolute;left:30px;font-size:20px" class="glyphicon glyphicon-arrow-left"></span></a>
+    <b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+      {{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;|| &nbsp;
+<b><span class="glyphicon glyphicon-earphone"></span>: +91 7615834732</b> &nbsp;|| &nbsp; 
+     <b><span class="glyphicon glyphicon-envelope"></span>: contact@ekart.com </b> &nbsp;
+     {% if user.is_authenticated %}
+     <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
+     <a href="/accounts/LogOut"><button type="button" class="btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-off"></span> LogOut
+    </button></a>
+    {% else %}
+    <a href="/accounts/login"><button type="button" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-log-in"></span> LogIn</button></a>
+      {% endif %}
+      </div> 
+       <div class="container-fluid">
+          <b><font face="Ink Free" color="brown" size=6px>E-kart</font><img src="/static/logo1.png" width=50 height=50></b> &nbsp;<b class="bg bg-info"><i>Welcome to India's No.1 E-Commerce site</i></b></div>
+            
+           </div>
+  <div class="container">
+    <center>
+      <h1 style="font-family: Ink Free;font-weight: bold;">Gallery</h1><hr>
+      {% for pro1 in prod %}
+<div class="col-sm-2" id="content"><img id="img" src="{{pro1.pro_img.url}}" ></div>
+
+
+  {% endfor %}
+</div>
+</center>
+</div>
+<!--Footer Start here-->
+		{% include 'footer.html' %}

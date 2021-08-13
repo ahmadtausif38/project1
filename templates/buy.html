@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>E-kart | Product</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+<style type="text/css">
+#img{
+height: 310px;width: 190px;
+border-radius: 15px;
+}
+table, th, td {
+  border: 1px solid skyblue;
+  border-collapse: collapse;
+}
+td,th{
+  padding: 25px;
+}
+
+.btn:hover {
+  color: skyblue;
+}
+
+</style>
+</head>
+<body style="background-color:#fff2e6;">
+<div class="container-fluid">
+
+   <div class="container-fluid text-right" style="background-color:pink;">
+    <b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+      {{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;|| &nbsp;
+<b><span class="glyphicon glyphicon-earphone"></span>: +91 7615834732</b> &nbsp;|| &nbsp; 
+     <b><span class="glyphicon glyphicon-envelope"></span>: Contact@ekart.com </b> &nbsp;
+     {% if user.is_authenticated %}
+     <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
+     <a href="/accounts/LogOut"><button type="button" class="btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-off"></span> LogOut
+    </button></a>
+    {% else %}
+    <a href="/accounts/login"><button type="button" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-log-in"></span> LogIn</button></a>
+      {% endif %}
+      </div> 
+       <div class="container-fluid">
+          <b><font face="Ink Free" color="brown" size=6px>E-kart<img src="/static/logo1.png" width=50 height=50></font></b> &nbsp;<b class="bg bg-info"><i>Welcome to India's No.1 E-Commerce site</i></b></div>
+                 
+  <h1 style="color:brown;text-align:center" >Product Details</h1>
+ 
+		<div class="container-fluid">
+       <div class="col-md-4">
+       <center>
+      <img id="img" src="{{product.pro_img.url}}" ><br><br>
+      <div>
+      <a href=""><button id='btn' type="submit" class="btn btn-success btn-lg" style="background-color:#DE3163;font-size:16px;font-weight:bold;">Buy Now</button></a>
+     <a href="#"><button id='btn' type="submit" class="btn btn-success btn-lg" style="background-color:#FF7F50;font-size:16px;font-weight:bold;">Add To Cart</button></a>
+     </div>
+         </center>
+      </div>
+      <div class="col-md-8">
+    
+    <table border = "1" width='500' style="background-color:white;" >
+<tr><td>Product Name :</td><th>{{product.pro_name}}</th></tr>
+<tr><td>Product Price :</td><th>&#8377; {{product.pro_price}}</th></tr>
+<tr><td>Product Brand :</td><th>{{product.pro_brand}}</th></tr>
+<tr><td>Highlights :</td><th>{{product.pro_desc}}</th></tr>
+
+  </table>
+      </div>
+      </div><br><br>
+<div class="container-fluid">
+      <div style="font-family: Segoe Script;background-color:#dcdcdc;font-weight: bold">
+        <h10><center>Team Members :Tausif Ahmad|Ankit Anjani|Abhishek Kumar|Vinay Ranjan</center></h10>
+      </div>
+    </div>
+</div>
+<script>
+	var app=angular.module('myapp',[])
+	app.controller('myCtrl',function($scope,$interval){
+	$scope.time=new Date().toLocaleTimeString()
+	$interval(function(){
+	$scope.time=new Date().toLocaleTimeString()
+})
+})
+</script>
+</body>
+</html>
