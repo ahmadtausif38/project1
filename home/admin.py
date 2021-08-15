@@ -11,26 +11,29 @@ class Admin_view(admin.ModelAdmin):
     search_fields=('pro_name',)
     list_filter=('pro_category',)
 
-class Admin_view1(admin.ModelAdmin):
+class Contact_view(admin.ModelAdmin):
     list_display=('name','email','message')
     list_editable=('message',)
     list_per_page=10
 
-class Admin_view2(admin.ModelAdmin):
+class Cart_view(admin.ModelAdmin):
     list_display=('id','user','product','qty')
+    list_per_page=10
     
-class Admin_view3(admin.ModelAdmin):
+class order_view(admin.ModelAdmin):
     list_display=('id','user','customer','product','qty','order_date')
+    list_per_page=10
 
-class Admin_view4(admin.ModelAdmin):
+class customer_view(admin.ModelAdmin):
     list_display=('id','user','name')
+    list_per_page=10
 
 admin.site.register(product,Admin_view)
 
-admin.site.register(contacts,Admin_view1)
+admin.site.register(contacts,Contact_view)
 
-admin.site.register(cart,Admin_view2)
+admin.site.register(cart,Cart_view)
 
-admin.site.register(orderplaced,Admin_view3)
+admin.site.register(orderplaced,order_view)
 
-admin.site.register(customer,Admin_view4)
+admin.site.register(customer,customer_view)
