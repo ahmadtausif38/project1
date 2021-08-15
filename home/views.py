@@ -1,9 +1,12 @@
 from django.db.models.query_utils import Q
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View 
 from django.contrib import messages
 from home.models import product
+from home.models import cart
+from home.models import orderplaced
+from home.models import customer
 from home.models import contacts
 # Create your views here.
 def login(request):
@@ -35,10 +38,26 @@ def contact(request):
         print("Data sbmitted")
         messages.success(request,"Your Message is Sucessfully submitted...")
         
-    
     return render(request,'contact.html')
 def helpandfeedback(request):
     return render(request,'helpandfeedback.html')
+
+def add_to_cart(request):
+    user=request.user
+    #print(user)  this will show the user name who is currently login
+    product_id=request.GET.get('prod_id')
+    product1= product.objects.get(id=product_id)
+    cart(user=user,product=product1).save()
+    return redirect('/show_cart')
+
+def show_cart(request):
+    if request.user.is_authenticated:
+        user=request.user
+        print(user)
+        cart1=cart.objects.filter(user=user)
+        
+        return render(request,'add_to_cart.html', {'cart1':cart1})
+
 def gallery(request):
     pro=product.objects.all()
 

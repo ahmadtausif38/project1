@@ -37,10 +37,11 @@ transform: scale(1.4);
    <a href="/index"><span style="position:absolute;left:30px;font-size:20px" class="glyphicon glyphicon-arrow-left"></span></a>
     <b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
       {{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;|| &nbsp;
-<b><span class="glyphicon glyphicon-earphone"></span>: +91 7615834732</b> &nbsp;|| &nbsp; 
+<b><span class="glyphicon glyphicon-earphone"></span>: +91 9572112409</b> &nbsp;|| &nbsp; 
      <b><span class="glyphicon glyphicon-envelope"></span>: contact@ekart.com </b> &nbsp;
      {% if user.is_authenticated %}
-     <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
+     <a href="/show_cart"><span class="glyphicon glyphicon-shopping-cart" style="color:brown;font-size:20px"></span></a>
+    &nbsp; <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
      <a href="/accounts/LogOut"><button type="button" class="btn btn-danger btn-sm">
       <span class="glyphicon glyphicon-off"></span> LogOut
     </button></a>

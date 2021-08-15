@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>E-kart | {{product.pro_name}}</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+<style type="text/css">
+#img{
+height: 90px;width: 50px;
+padding:5px;
+}
+
+
+.dropdown-menu {
+  min-width: 65px;
+  
+}
+.btn:hover {
+  color: skyblue;
+  box-shadow: 5px 10px 8px #BFBFBF;
+}
+
+</style>
+</head>
+<body style="background-color:#F0FFFF;">
+
+   <div class="container-fluid text-right" style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
+   <a href="/index"><span style="position:absolute;left:30px;font-size:20px" class="glyphicon glyphicon-arrow-left"></span></a>
+    <b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
+      {{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;|| &nbsp;
+<b><span class="glyphicon glyphicon-earphone"></span>: +91 7615834732</b> &nbsp;|| &nbsp; 
+     <b><span class="glyphicon glyphicon-envelope"></span>: Contact@ekart.com </b> &nbsp;
+     {% if user.is_authenticated %}
+     <a href="/show_cart"><span class="glyphicon glyphicon-shopping-cart" style="color:brown;font-size:20px"></span></a>
+    &nbsp;
+     <div class="btn-group">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.first_name}}
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Profile</a><br>
+    <a class="dropdown-item" href="#">Order</a><br>
+    <a class="dropdown-item" href="/accounts/LogOut">LogOut</a>
+    
+  
+  </div>
+</div>
+
+  
+    {% else %}
+    <a href="/accounts/login"><button type="button" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-log-in"></span> LogIn</button></a>
+      {% endif %}
+      </div> 
+       
+          <b><font face="Ink Free" color="brown" size=6px>E-kart<img src="/static/logo1.png" width=50 height=50></font></b> &nbsp;<b class="bg bg-info"><i>Welcome to India's No.1 E-Commerce site</i></b></div>
+                 
+		<div class="container-fluid">
+    <h2 align="center"><em>{{user.first_name}} 's Cart</em></h2>
+    <hr><div class="container">
+    <div class="col-md-8" style="box-shadow:5px 5px 5px #dcdcdc">
+    {% for cart1 in cart1 %}
+    
+       <div class="col-md-3" align="center">
+                {% if cart1.product.pro_category == 'Cam' or  cart1.product.pro_category == 'Lap' %}
+      <a href="/product_details/{{cart1.product.id}}"><img id="img" src="{{cart1.product.pro_img.url}}" style="height:80px;width:80px;"></a>
+      {% else %}
+    <a href="/product_details/{{cart1.product.id}}"><img id="img" src="{{cart1.product.pro_img.url}}" ></a>
+     {% endif %}
+    
+        </div>
+      <div class="col-md-9">
+              <h4><b><a href="/product_details/{{cart1.product.id}}">{{cart1.product.pro_name}}</a></b></h4>
+                <h4>&#8377; {{cart1.product.pro_price}}</h4>
+                  <p>Quantity :{{cart1.qty}} <p>
+                  <p><button type="submit">Remove</button><hr style="background-color:#dcdcdc;height: 1px;">
+        </div>
+
+{% endfor %}</div>
+
+<div class="col-md-4" style="box-shadow:5px 5px 5px #dcdcdc">
+<h3>Price Details</h3>
+<table class="table">
+      <tr><td>Base Price :</td></tr>
+      <tr><td>Shipping Charge : </td></tr>
+      <tr><td>Total Price : </td></tr>
+      <tr><td><a href=""><button id='btn' type="submit" class="btn btn-success btn-lg" style="background-color:#FF7F50;font-size:16px;font-weight:bold;">Place Order</button></a>
+      </td></tr>      
+      
+</table>
+</div></div>
+
+      </div>
+      </div></div>
+      <!-- Footer Starts Here-->
+{% include "footer.html" %}

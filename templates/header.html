@@ -50,12 +50,12 @@ border-radius: 20px;
 <body style="background-color:#F0FFFF">
 <div class="container-fluid">
 
-   <div class="container-fluid text-right" style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
+   <div class="container-fluid text-right " style="background-color:pink;box-shadow: 5px 10px 8px #BFBFBF;">
    	<!-- Time is written here-->
    	<b><span ng-app="myapp" ng-controller="myCtrl">{% verbatim %}
 {{time}}{% endverbatim %}</span></b>&nbsp;&nbsp;&nbsp;
 
-<b>|| <span class="glyphicon glyphicon-earphone"></span>:+91 7615834732 ||</b> &nbsp; 
+<b>|| <span class="glyphicon glyphicon-earphone"></span>:+91 9572112409 ||</b> &nbsp; 
      <b><span class="glyphicon glyphicon-envelope"></span>: contact@ekart.com || </b>
 {% if user.is_authenticated %}
      <em class="bg bg-success">Welcome,<b>{{user.first_name}}</b></em>
@@ -80,7 +80,7 @@ border-radius: 20px;
                 <a href="/about"><font size=3px color=black style="padding:20px;">About Us</font></a>
                 <a href="/gallery"><font size=3px color=black style="padding:20px;">Gallery</font></a>
                 <a href="/contact"><font size=3px color=black style="padding:20px;">Contact Us</font></a>
-                <a href="#" style="padding-left:40px;"><span class="glyphicon glyphicon-shopping-cart" style="color:brown;font-size:20px"><sup>0</sup></span></a>
+                <a href="/show_cart" style="padding-left:40px;"><span class="glyphicon glyphicon-shopping-cart" style="color:brown;font-size:20px"><sup>{{cart.qty}}</sup></span></a>
                 <span style="position:absolute;right:30px;">
                 <form action='/search' method='get'>
                  {% csrf_token %}

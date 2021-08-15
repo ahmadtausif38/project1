@@ -3,7 +3,10 @@ from home import views
 
 urlpatterns=[
     path('',views.login,name='login'),
-   
+    #cart
+    path('add_to_cart',views.add_to_cart,name='add_to_cart'),
+    path('show_cart',views.show_cart,name='show_cart'),
+
     path('index',views.home,name='home'),
     path('search',views.search,name='search'),
     
