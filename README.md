@@ -1,6 +1,14 @@
-# project1
-This is an e-commerce website project in Django Framewok
-#Homepage
-![Screenshot (1298)](https://user-images.githubusercontent.com/82999506/129395674-4c9eca77-6f8c-42b0-8b08-d8e72c99231e.png)
-#Product Details Page
-![Screenshot (1299)](https://user-images.githubusercontent.com/82999506/129395691-1926e766-cb97-463b-92ef-21983e8e25e4.png)
+# E-cart
+This is a dynamic e-commerce website project in which Django is used in Backend.
+ * It has user authentication facility.
+  * Here user have to login first before entering into homepage.
+  * When user successfully login then its username will be appear on top of the page.
+  * Cart and Checkout facility is also available.
+  * MySQL database is used in this project.
+
+### Homepage looks like this
+![Screenshot (1300)](https://user-images.githubusercontent.com/82999506/129484050-3fd566d2-49c0-4621-9d2d-135777d1b3f4.png)
+
+### This is how Product Details Page looks like
+![Screenshot (1301)](https://user-images.githubusercontent.com/82999506/129484063-bd73bbfa-43ba-43b2-83f6-7662e02c13fb.png)
+All these informations about product like price,image,description etc. is coming from database.
