@@ -5,6 +5,7 @@ This is a dynamic e-commerce website project in which Django is used in Backend.
   * When user successfully login then its username will be appear on top of the page.
   * Cart and Checkout facility is also available.
   * MySQL database is used in this project.
+  * It will show the current time of the system.
 
 ### Homepage looks like this
 ![Screenshot (1300)](https://user-images.githubusercontent.com/82999506/129484050-3fd566d2-49c0-4621-9d2d-135777d1b3f4.png)
