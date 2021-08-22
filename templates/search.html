@@ -11,7 +11,7 @@
       {% endif %}
        {% for item in items %}  
        
-<div class="col-sm-3" id="content"><a href="/product_details/{{item.id}}"><img id="img" src="{{item.pro_img.url}}" ><br><h4>{{item.pro_name}}</h4></a></div>
+<div class="col-sm-3" id="content"><a href="/product_details/{{item.id}}">{% if item.pro_category == 'Lap' %}<img id="img" src="{{item.pro_img.url}}" style="height:200px;width:230px;">{% else %}<img id="img" src="{{item.pro_img.url}}" >{% endif %}<br><h4>{{item.pro_name}}</h4></a></div>
  {% endfor %}
 </div>
  </div>

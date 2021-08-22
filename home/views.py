@@ -53,11 +53,23 @@ def add_to_cart(request):
 def show_cart(request):
     if request.user.is_authenticated:
         user=request.user
-        print(user)
-        cart1=cart.objects.filter(user=user)
         
-        return render(request,'add_to_cart.html', {'cart1':cart1})
-
+        cart1=cart.objects.filter(user=user)
+        cart_pro=[p for p in cart.objects.all() if p.user == user]
+        if cart_pro:
+            price=0.0  
+            delivery=50.0
+            amt=999
+            for i in cart_pro:           
+                temp=i.qty * i.product.pro_price
+                price=temp+price
+                print(price)
+            
+            
+            price2=price+delivery
+            return render(request,'add_to_cart.html', {'amt':amt,'cart1':cart1,'price2':price2,'price':price,'delivery':delivery})
+        else:
+            return render(request,'empty_cart.html')
 def gallery(request):
     pro=product.objects.all()
 
