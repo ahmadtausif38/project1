@@ -6,6 +6,8 @@ urlpatterns=[
     #cart
     path('add_to_cart',views.add_to_cart,name='add_to_cart'),
     path('show_cart',views.show_cart,name='show_cart'),
+    path('plus_item',views.plus_item),
+    path('minus_item',views.minus_item),
 
     path('index',views.home,name='home'),
     path('search',views.search,name='search'),

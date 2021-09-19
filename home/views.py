@@ -1,5 +1,5 @@
 from django.db.models.query_utils import Q
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse , JsonResponse
 from django.shortcuts import render,redirect
 from django.views import View 
 from django.contrib import messages
@@ -43,12 +43,15 @@ def helpandfeedback(request):
     return render(request,'helpandfeedback.html')
 
 def add_to_cart(request):
-    user=request.user
-    #print(user)  this will show the user name who is currently login
-    product_id=request.GET.get('prod_id')
-    product1= product.objects.get(id=product_id)
-    cart(user=user,product=product1).save()
-    return redirect('/show_cart')
+    if request.user.is_authenticated:
+        user=request.user
+        #print(user)  this will show the user name who is currently login
+        product_id=request.GET.get('prod_id')
+        product1= product.objects.get(id=product_id)
+        cart(user=user,product=product1).save()
+        return redirect('/show_cart')
+    else:
+        return redirect('/')
 
 def show_cart(request):
     if request.user.is_authenticated:
@@ -70,6 +73,58 @@ def show_cart(request):
             return render(request,'add_to_cart.html', {'amt':amt,'cart1':cart1,'price2':price2,'price':price,'delivery':delivery})
         else:
             return render(request,'empty_cart.html')
+    else:
+        return redirect("/")
+
+def plus_item(request):
+    if request.method=='GET':
+        pord_id=request.GET['prod_id']
+        c=cart.objects.get(Q(product=pord_id)&Q(user=request.user))
+        c.qty+=1
+        c.save()
+        cart_pro=[p for p in cart.objects.all() if p.user == request.user]
+        if cart_pro:
+            price=0.0  
+            delivery=50.0
+            amt=999
+            for i in cart_pro:           
+                temp=i.qty * i.product.pro_price
+                price=temp+price
+                print(price)
+            price2=price+delivery
+            data={
+                'qty':c.qty,
+                'price':price,
+                'price2':price2,
+                'delivery':delivery
+            }
+            return JsonResponse(data)
+def minus_item(request):
+    if request.method=='GET':
+        pord_id=request.GET['prod_id']
+        c=cart.objects.get(Q(product=pord_id)&Q(user=request.user))
+        c.qty-=1
+        c.save()
+        cart_pro=[p for p in cart.objects.all() if p.user == request.user]
+        if cart_pro:
+            price=0.0  
+            delivery=50.0
+            amt=999
+            for i in cart_pro:           
+                temp=i.qty * i.product.pro_price
+                price=temp+price
+                print(price)
+            price2=price+delivery
+            data={
+                'qty':c.qty,
+                'price':price,
+                'price2':price2,
+                'delivery':delivery
+            }
+            return JsonResponse(data)
+
+
+
 def gallery(request):
     pro=product.objects.all()
 

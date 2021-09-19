@@ -17,7 +17,7 @@ class Contact_view(admin.ModelAdmin):
     list_per_page=10
 
 class Cart_view(admin.ModelAdmin):
-    list_display=('id','user','product','qty')
+    list_display=('id','user','product','qty','Date')
     list_per_page=10
     
 class order_view(admin.ModelAdmin):

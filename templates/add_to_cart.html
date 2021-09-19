@@ -82,8 +82,8 @@ padding:5px;
       <div class="col-md-9">
               <h4><b><a href="/product_details/{{cart1.product.id}}">{{cart1.product.pro_name}}</a></b></h4>
                 <h4>&#8377; {{cart1.product.pro_price}}</h4>
-                  <p>Quantity :{{cart1.qty}} <p>
-                  <p><button type="submit">Remove</button><hr style="background-color:#dcdcdc;height: 1px;">
+                  <p>Quantity :<a href="#" id="plus-item" class="glyphicon glyphicon-plus-sign" pid={{cart1.product.id}}></a> <span id="quantity" style="font-weight:bold;">{{cart1.qty}}</span> <a href="#" id="minus-item" class="glyphicon glyphicon-minus-sign" pid={{cart1.product.id}}></a> </p>
+                  <p><a href="#" class="btn btn-danger btn-sm" pid={{cart1.product.id}}>Remove</a><hr style="background-color:#dcdcdc;height: 1px;"></p>
         </div>
 
 {% endfor %}</div>
@@ -93,9 +93,9 @@ padding:5px;
 
 <h3>Price Details</h3>
 <table class="table">
-      <tr><td>Price </td><td>: &#8377; {{price}}</td></tr>
-      <tr><td>Shipping Charge </td><td>: &#8377; {% if price <= amt %}{{delivery}} {% else %}<strike>{{delivery}}</strike><font color="green"> Free</strike>{% endif %} <td> </td></tr>
-      <tr><td>Total Price </td><td>: &#8377; {% if price <= amt  %} {{price2}} {% else %}{{price}}{% endif %} </td></tr>
+      <tr><td>Price </td><td id="price">: &#8377; {{price}}</td></tr>
+      <tr><td>Shipping Charge </td><td id="delivery">: &#8377; {% if price <= amt %}{{delivery}} {% else %}<strike>{{delivery}}</strike><font color="green"> Free</strike>{% endif %} <td> </td></tr>
+      <tr><td>Total Price </td><td id="totalprice">: &#8377; {% if price <= amt  %} {{price2}} {% else %}{{price}}{% endif %} </td></tr>
       <tr><td><a href=""><button id='btn' type="submit" class="btn btn-success btn-lg" style="background-color:#FF7F50;font-size:16px;font-weight:bold;">Place Order</button></a>
       </td></tr>   
       
@@ -105,5 +105,50 @@ padding:5px;
 
       </div>
       </div></div>
+
+<script>
+$("#plus-item").click(function(){
+  var id=$(this).attr("pid").toString();
+  var quantity=document.getElementById("quantity");
+  console.log(id)
+  //alert(id);
+  $.ajax({
+    type:"GET",
+    url :"plus_item",
+    data :{
+      prod_id : id
+    },
+    success : function(data){
+      quantity.innerText=data.qty,
+      document.getElementById("price").innerText=data.price;
+      document.getElementById("totalprice").innerText=data.price2;
+     // document.getElementById("delivery").innerText=data.delivery;
+    }
+
+  })
+  
+})
+$("#minus-item").click(function(){
+  var id=$(this).attr("pid").toString();
+  var quantity=document.getElementById("quantity");
+  console.log(id)
+  //alert(id);
+  $.ajax({
+    type:"GET",
+    url :"minus_item",
+    data :{
+      prod_id : id
+    },
+    success : function(data){
+      quantity.innerText=data.qty,
+      document.getElementById("price").innerText=data.price;
+      document.getElementById("totalprice").innerText=data.price2;
+     // document.getElementById("delivery").innerText=data.delivery;
+    }
+
+  })
+  
+})
+</script>
       <!-- Footer Starts Here-->
 {% include "footer.html" %}
